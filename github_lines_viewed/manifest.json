@@ -13,7 +13,11 @@
   "content_scripts": [
     {
       "matches": ["*://github.com/*/*/pull/*/files"],
-      "js": ["borderify.js"]
+      "js": ["lines-viewed.js"]
     }
+  ],
+
+  "permissions": [
+    "activeTab"
   ]
 }
