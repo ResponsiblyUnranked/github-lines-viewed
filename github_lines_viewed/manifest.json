@@ -1,0 +1,19 @@
+{
+  "manifest_version": 2,
+  "name": "GitHub Lines Viewed",
+  "version": "0.1.0",
+
+  "description": "Replaces GitHub's 'files viewed' with 'lines viewed' instead.",
+
+  "icons": {
+    "48": "icons/border-48.png",
+    "96": "icons/border-48.png"
+  },
+
+  "content_scripts": [
+    {
+      "matches": ["*://github.com/*/*/pull/*/files"],
+      "js": ["borderify.js"]
+    }
+  ]
+}
