@@ -39,7 +39,7 @@ function runScript() {
   textReplacement();
 }
 
-const observer = new MutationObserver((mutations) => {
+const checkboxObserver = new MutationObserver((mutations) => {
   mutations.forEach(mutation => {
     if (mutation.addedNodes.length) {
       runScript();
@@ -49,7 +49,7 @@ const observer = new MutationObserver((mutations) => {
 
 const targetNode = document.querySelector('copilot-diff-entry').parentNode.parentNode;
 if (targetNode) {
-  observer.observe(targetNode, {
+  checkboxObserver.observe(targetNode, {
     childList: true,
     subtree: true
   });
