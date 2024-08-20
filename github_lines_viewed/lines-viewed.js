@@ -1,48 +1,55 @@
-function updateLinesRead(){
-    console.log("updating lines!")
-    let changed_files = document.querySelectorAll('copilot-diff-entry');
+function getNewRatio(){
+    const changedFiles = document.querySelectorAll('copilot-diff-entry');
 
-    let total_lines_changed = 0;
-    let lines_viewed = 0;
+    let totalLinesChanged = 0;
+    let linesViewed = 0;
 
-    changed_files.forEach(changed_file => {
-        let file_lines_changed = Number(changed_file.querySelector('.diffstat').textContent)
-        total_lines_changed += file_lines_changed
+    changedFiles.forEach(changedFile => {
+        let fileLinesChanged = Number(changedFile.querySelector('.diffstat').textContent)
+        totalLinesChanged += fileLinesChanged
 
-        let checkbox = changed_file.querySelector('input[type="checkbox"]')
+        let checkbox = changedFile.querySelector('input[type="checkbox"]')
         if (checkbox.hasAttribute('checked')) {
-            lines_viewed += file_lines_changed
+            linesViewed += fileLinesChanged
         }
     })
 
-    let progress_bar = document.querySelector('progress-bar');
-
-    let new_ratio = `${lines_viewed} / ${total_lines_changed}`
-
-    progress_bar.setAttribute('ratio', new_ratio)
-
-    let progress_bar_text = progress_bar.children[0].children[0];
-
-    progress_bar_text.innerText = progress_bar_text.innerText.replace('file', 'line').replace('files', 'lines');
-
+    return `${linesViewed} / ${totalLinesChanged}`
 }
 
-function addCheckboxListeners(){
-    console.log("adding checkbox listeners")
-    let changed_files = document.querySelectorAll('copilot-diff-entry');
-
-    changed_files.forEach(changed_file => {
-        let checkbox = changed_file.querySelector('.js-replace-file-header-review')
-        checkbox.addEventListener('click', updateLinesRead)
-
-        let clickCount = 0;
-        checkbox.addEventListener('click', () => {
-            clickCount++;
-            console.log(`Button clicked ${clickCount} times`);
-        });
-
-    })
+function updateLinesRead(newRatio){
+    console.log(`Updating lines read: ${newRatio}`)
+    const progressBar = document.querySelector('progress-bar');
+    progressBar.setAttribute('ratio', newRatio)
+    progressBar.increment() // Creates an error, but still works
 }
 
-addCheckboxListeners()
-updateLinesRead()
+function textReplacement() {
+    const progressBar = document.querySelector('progress-bar');
+    const progressBarText = progressBar.children[0].innerText;
+    const newProgressBarText = progressBarText.replace('file', 'line').replace('files', 'lines');
+    console.log(`newProgressBarText = ${newProgressBarText}`)
+    progressBarText.innerText = newProgressBarText
+}
+
+const observer = new MutationObserver((mutations) => {
+    mutations.forEach(mutation => {
+        if (mutation.addedNodes.length) {
+            let newRatio = getNewRatio();
+            updateLinesRead(newRatio);
+            textReplacement();
+        }
+    });
+});
+
+const targetNode = document.querySelector('copilot-diff-entry').parentNode.parentNode;
+if (targetNode) {
+    observer.observe(targetNode, {
+        childList: true,
+        subtree: true
+    });
+}
+
+const firstNewRatio = getNewRatio();
+updateLinesRead(firstNewRatio);
+textReplacement();
