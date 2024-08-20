@@ -28,7 +28,7 @@ function updateLinesRead(newRatio){
 function textReplacement() {
     const progressBar = document.querySelector('progress-bar');
     const progressBarText = progressBar.children[0].innerText;
-    const newProgressBarText = progressBarText.replace('file', 'line').replace('files', 'lines');
+    const newProgressBarText = progressBarText.replaceAll('file', 'line').replaceAll('files', 'lines');
     console.log(`newProgressBarText = ${newProgressBarText}`)
     progressBarText.innerText = newProgressBarText
 }
