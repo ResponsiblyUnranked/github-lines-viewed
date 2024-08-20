@@ -12,7 +12,10 @@
 
   "content_scripts": [
     {
-      "matches": ["*://github.com/*/*/pull/*/files"],
+      "matches": [
+        "*://github.com/*/*/pull/*/files",
+        "*://github.com/*/*/pull/*/files/*"
+      ],
       "js": ["lines-viewed.js"]
     }
   ],
