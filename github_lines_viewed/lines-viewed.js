@@ -24,6 +24,7 @@ function updateLinesRead(newRatio){
     progressBar.increment() // Creates an error, but still works
 }
 
+// I don't think this ever runs since the progressBar.increment() fails (but works)
 function textReplacement() {
     const progressBar = document.querySelector('progress-bar');
     const progressBarText = progressBar.children[0].innerText;
@@ -50,6 +51,8 @@ if (targetNode) {
     });
 }
 
+// This only runs on a direct refresh or load of a PR /files URL not if coming
+// from a different part of the PR.
 const firstNewRatio = getNewRatio();
 updateLinesRead(firstNewRatio);
 textReplacement();
