@@ -33,12 +33,16 @@ function textReplacement() {
     progressBarText.innerText = newProgressBarText
 }
 
+function runScript() {
+  let newRatio = getNewRatio();
+  updateLinesRead(newRatio);
+  textReplacement();
+}
+
 const observer = new MutationObserver((mutations) => {
   mutations.forEach(mutation => {
     if (mutation.addedNodes.length) {
-      let newRatio = getNewRatio();
-      updateLinesRead(newRatio);
-      textReplacement();
+      runScript();
     }
   });
 });
@@ -53,6 +57,4 @@ if (targetNode) {
 
 // This only runs on a direct refresh or load of a PR /files URL not if coming
 // from a different part of the PR.
-const firstNewRatio = getNewRatio();
-updateLinesRead(firstNewRatio);
-textReplacement();
+runScript();
