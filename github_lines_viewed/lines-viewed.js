@@ -21,16 +21,15 @@ function updateLinesRead(newRatio) {
   console.log(`Updating lines read: ${newRatio}`)
   const progressBar = document.querySelector('progress-bar');
   progressBar.setAttribute('ratio', newRatio)
-  progressBar.increment() // Creates an error, but still works
 }
 
 // I don't think this ever runs since the progressBar.increment() fails (but works)
 function textReplacement() {
-    const progressBar = document.querySelector('progress-bar');
-    const progressBarText = progressBar.children[0].innerText;
-    const newProgressBarText = progressBarText.replaceAll('file', 'line');
-    console.log(`newProgressBarText = ${newProgressBarText}`)
-    progressBarText.innerText = newProgressBarText
+  const progressBar = document.querySelector('progress-bar');
+  const progressBarText = progressBar.children[0].innerText;
+  const newProgressBarText = progressBarText.replaceAll('file', 'line');
+  console.log(`newProgressBarText = ${newProgressBarText}`)
+  progressBarText.innerText = newProgressBarText
 }
 
 function runScript() {
