@@ -57,10 +57,8 @@ const observer = new MutationObserver(() => {
 
     if (location.href !== previousUrl) {
       previousUrl = location.href
-      console.log(`URL changed to ${location.href}`)
 
       if (location.href.endsWith("/files")) {
-        console.log("run script")
         runScript()
       }
     }
