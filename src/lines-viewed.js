@@ -8,6 +8,11 @@ function getNewRatio() {
     let fileLinesChanged = Number(
       changedFile.querySelector(".diffstat").textContent
     )
+
+    if (isNaN(fileLinesChanged)) {
+      fileLinesChanged = 1
+    }
+
     totalLinesChanged += fileLinesChanged
 
     let checkbox = changedFile.querySelector('input[type="checkbox"]')
