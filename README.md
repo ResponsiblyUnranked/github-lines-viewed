@@ -18,7 +18,7 @@ extension, and you can enjoy a more helpful experience.
 
 ### Comparison
 
-<img align="left" width="190" src="assets/before.png"/>
+<img align="left" width="207" src="assets/before.png"/>
 <img align="centre" width="211" src="assets/after.png"/>
 
 ## Features
