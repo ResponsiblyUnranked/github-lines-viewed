@@ -3,7 +3,6 @@
   <h1>GitHub Lines Viewed</h1>
   <p>🔎 Enhancing the PR progress bar on GitHub to show <em><strong>lines</strong></em> viewed instead of files. 📝</p>
 </div>
-<br></br>
 
 ## Why?
 
