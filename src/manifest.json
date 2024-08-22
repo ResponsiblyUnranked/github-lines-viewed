@@ -9,15 +9,9 @@
   },
   "content_scripts": [
     {
-      "matches": [
-        "*://github.com/*"
-      ],
-      "js": [
-        "lines-viewed.js"
-      ]
+      "matches": ["*://github.com/*"],
+      "js": ["lines-viewed.js"]
     }
   ],
-  "permissions": [
-    "activeTab"
-  ]
+  "permissions": ["activeTab"]
 }

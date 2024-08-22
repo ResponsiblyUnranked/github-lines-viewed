@@ -6,7 +6,7 @@ function getNewRatio() {
 
   changedFiles.forEach((changedFile) => {
     let fileLinesChanged = Number(
-      changedFile.querySelector(".diffstat").textContent.replaceAll(",", "")
+      changedFile.querySelector(".diffstat").textContent.replaceAll(",", ""),
     )
 
     if (isNaN(fileLinesChanged)) {

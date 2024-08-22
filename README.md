@@ -30,7 +30,7 @@ extension, and you can enjoy a more helpful experience.
 ### Planned
 
 - File exclusion list, to ignore `.lock` files with thousands of changes not designed
-for human review https://github.com/ResponsiblyUnranked/github-lines-viewed/issues/12
+  for human review https://github.com/ResponsiblyUnranked/github-lines-viewed/issues/12
 - Progress bar colour to change based on its value, to clearly indicate a difference
-between anything < 100% and 100% https://github.com/ResponsiblyUnranked/github-lines-viewed/issues/13
+  between anything < 100% and 100% https://github.com/ResponsiblyUnranked/github-lines-viewed/issues/13
 - Support for all other major browsers
