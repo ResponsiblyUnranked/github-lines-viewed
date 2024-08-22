@@ -1,5 +1,5 @@
 {
-  "manifest_version": 2,
+  "manifest_version": 3,
   "name": "GitHub Lines Viewed",
   "version": "1.0.2",
   "description": "Replaces GitHub's 'files viewed' with 'lines viewed' instead.",
@@ -13,10 +13,5 @@
       "js": ["lines-viewed.js"]
     }
   ],
-  "permissions": ["activeTab"],
-  "browser_specific_settings": {
-    "gecko": {
-      "id": "{1f27e2d0-740c-46eb-978a-9c119bc60371}"
-    }
-  }
+  "permissions": ["activeTab"]
 }
