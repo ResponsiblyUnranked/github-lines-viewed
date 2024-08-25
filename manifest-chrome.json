@@ -12,6 +12,5 @@
       "matches": ["*://github.com/*"],
       "js": ["lines-viewed.js"]
     }
-  ],
-  "permissions": ["activeTab"]
+  ]
 }
