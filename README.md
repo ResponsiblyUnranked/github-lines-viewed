@@ -3,6 +3,9 @@
   <h1>GitHub Lines Viewed</h1>
   <p>🔎 Enhancing the PR progress bar on GitHub to show <em><strong>lines</strong></em> viewed instead of files. 📝</p>
 </div>
+<p align="center"><a rel="noreferrer noopener" href="https://addons.mozilla.org/en-US/firefox/addon/github-lines-viewed/"><img alt="Firefox Addons Store" src="https://img.shields.io/badge/Firefox-FF7139?style=for-the-badge&logo=Firefox-Browser&logoColor=white"></a></p>
+<br/>
+<br/>
 
 ## Why?
 
@@ -34,3 +37,10 @@ extension, and you can enjoy a more helpful experience.
 - Progress bar colour to change based on its value, to clearly indicate a difference
   between anything < 100% and 100% https://github.com/ResponsiblyUnranked/github-lines-viewed/issues/13
 - Support for all other major browsers
+
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<p align="center"><a rel="noreferrer noopener" href="https://forthebadge.com/"><img alt="Built With Love" src="https://forthebadge.com/images/featured/featured-built-with-love.svg"></a> <a rel="noreferrer noopener" href="https://forthebadge.com/"><img alt="Gluten Free" src="https://forthebadge.com/images/featured/featured-gluten-free.svg"></a></p>
