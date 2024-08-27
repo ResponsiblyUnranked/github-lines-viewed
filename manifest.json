@@ -1,7 +1,7 @@
 {
   "manifest_version": 2,
   "name": "GitHub Lines Viewed",
-  "version": "1.0.3",
+  "version": "1.1.0",
   "description": "Replaces GitHub's 'files viewed' with 'lines viewed' instead.",
   "icons": {
     "48": "icons/48.png",
