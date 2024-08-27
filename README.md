@@ -3,7 +3,7 @@
   <h1>GitHub Lines Viewed</h1>
   <p>🔎 Enhancing the PR progress bar on GitHub to show <em><strong>lines</strong></em> viewed instead of files. 📝</p>
 </div>
-<p align="center"><a rel="noreferrer noopener" href="https://addons.mozilla.org/en-US/firefox/addon/github-lines-viewed/"><img alt="Firefox Addons Store" src="https://img.shields.io/badge/Firefox-FF7139?style=for-the-badge&logo=Firefox-Browser&logoColor=white"></a></p>
+<p align="center"><a rel="noreferrer noopener" href="https://addons.mozilla.org/en-US/firefox/addon/github-lines-viewed/"><img alt="Firefox Addons Store" src="https://img.shields.io/badge/Firefox-FF7139?style=for-the-badge&logo=Firefox-Browser&logoColor=white"></a>  <a rel="noreferrer noopener" href="https://chromewebstore.google.com/detail/bkhdcjhbpmoecijedlaabchnoaomibgj"><img alt="Chrome Web Store" src="https://img.shields.io/badge/Google%20Chrome-4285F4?style=for-the-badge&logo=GoogleChrome&logoColor=white"></a></p>
 <br/>
 <br/>
 
