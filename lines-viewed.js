@@ -35,10 +35,25 @@ function textReplacement() {
   progressBarText.data = progressBarText.data.replaceAll("file", "line")
 }
 
+function updateBarColour() {
+  const bar = document.querySelector(
+    ".color-bg-accent-emphasis.js-review-progress",
+  )
+
+  bar.style.setProperty("transition", "width 0.2s ease-out, background-color 0.3s ease")
+
+  if (bar.style.width == "100%") {
+    bar.style.setProperty("background-color", "#3b8640", "important")
+  } else {
+    bar.style.setProperty("background-color", "#3c69ba", "important")
+  }
+}
+
 function runScript() {
   let newRatio = getNewRatio()
   updateLinesRead(newRatio)
   textReplacement()
+  updateBarColour()
 }
 
 const checkboxObserver = new MutationObserver((mutations) => {
