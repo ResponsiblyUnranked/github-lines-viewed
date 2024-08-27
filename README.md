@@ -24,19 +24,24 @@ extension, and you can enjoy a more helpful experience.
 <img align="left" width="207" src="assets/before.png"/>
 <img align="centre" width="211" src="assets/after.png"/>
 
+Colour Change at 100%:
+
+<img width="400" src="assets/colour-change.gif"/>
+
 ## Features
 
 ### Current
 
 - Replaces 'files viewed' with 'lines viewed'
+- Progress bar colour to change based on its value, to clearly indicate a difference
+  between anything < 100% and 100%
 
 ### Planned
 
 - File exclusion list, to ignore `.lock` files with thousands of changes not designed
   for human review https://github.com/ResponsiblyUnranked/github-lines-viewed/issues/12
-- Progress bar colour to change based on its value, to clearly indicate a difference
-  between anything < 100% and 100% https://github.com/ResponsiblyUnranked/github-lines-viewed/issues/13
-- Support for all other major browsers
+- Publish to Edge extension store
+- Port for Safari
 
 <br/>
 <br/>
