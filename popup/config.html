@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../style/bootstrap.min.css" />
+  </head>
+
+  <body style="min-width: 450px">
+    <div class="container p-4">
+        <div class="row">
+            <h4>GitHub Lines Viewed</h4>
+        </div>
+        <div class="row">
+            <h5>Configuration</h5>
+        </div>
+        <div class="row pt-3">
+            <h6>Exclusions List</h6>x
+        </div>
+        <div class="row d-flex align-items-center">
+            <div class="col-10">
+                <textarea rows="4" class="form-control font-monospace" id="exclusion-list" placeholder="Enter each regex pattern on a new line."></textarea>
+            </div>
+            <div class="col-2">
+                <button type="button" class="btn btn-secondary">Edit</button>
+            </div>
+        </div>
+    </div>
+    <script src="../style/bootstrap.bundle.min.js"></script>
+    <script src="config.js"></script>
+  </body>
+</html>
