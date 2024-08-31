@@ -15,6 +15,10 @@
       "js": ["lines-viewed.js"]
     }
   ],
+  "background": {
+    "scripts": ["popup/config.js"],
+    "persistent": true
+  },
   "browser_action": {
     "default_icon": "icons/48.png",
     "default_title": "GitHub Lines Viewed",

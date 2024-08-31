@@ -1,3 +1,7 @@
+// Create listeners
+// browser.runtime.onMessage.addListener(sendExclusionsList)
+
+// Enable popovers
 const popoverTriggerList = document.querySelectorAll(
   '[data-bs-toggle="popover"]',
 )
@@ -5,17 +9,27 @@ const popoverList = [...popoverTriggerList].map(
   (popoverTriggerEl) => new bootstrap.Popover(popoverTriggerEl),
 )
 
+// Logic for regex excludes
 const editExclusionsButton = document.getElementById("editExclusions")
 const insertCommonExclusionsButton = document.getElementById(
   "insertCommonExclusions",
 )
-const exclusions = document.getElementById("exclusionList")
-const invalidRegexAlert = document.getElementById("invalidRegexAlert")
+const exclusionsTextBox = document.getElementById("exclusionList")
+let savedExclusions = localStorage.getItem("gh-lines-viewed-exclusions-list")
+
+if (savedExclusions === null) {
+  savedExclusions = []
+} else {
+  savedExclusions = JSON.parse(savedExclusions)
+}
+
+savedExclusions = savedExclusions.join("\n")
+exclusionsTextBox.value = savedExclusions
 
 editExclusionsButton.addEventListener("click", function () {
   // Cosmetic Changes
   insertCommonExclusionsButton.disabled = !insertCommonExclusionsButton.disabled
-  exclusions.disabled = !exclusions.disabled
+  exclusionsTextBox.disabled = !exclusionsTextBox.disabled
 
   if (editExclusionsButton.textContent.trim() === "Edit") {
     editExclusionsButton.textContent = "Save"
@@ -30,35 +44,44 @@ editExclusionsButton.addEventListener("click", function () {
     editExclusionsButton.classList.remove("btn-danger")
     insertCommonExclusionsButton.classList.add("btn-secondary")
     insertCommonExclusionsButton.classList.remove("btn-primary")
+  }
+  saveExclusions()
+})
 
-    // Save data
-    const patternStrings = exclusions.value.split("\n")
-    const regexPatterns = []
-    const badPatterns = []
-    let badPatternError = ""
+function saveExclusions() {
+  // Save data
+  const patternStrings = exclusionsTextBox.value.split("\n")
+  const validPatterns = []
+  const badPatterns = []
+  let badPatternError = ""
 
-    for (let i = 0; i < patternStrings.length; i++) {
-      try {
-        regexPatterns.push(new RegExp(patternStrings[i]))
-      } catch (error) {
-        badPatterns.push(patternStrings[i])
-      }
-    }
-
-    for (let i = 0; i < badPatterns.length; i++) {
-      badPatternError += `<code>${badPatterns[i]}</code><br>`
-    }
-    const badRegexErrorMessage =
-      "The following regex patterns are invalid:<br>" + badPatternError
-
-    const alertPlaceholder = document.getElementById("invalidRegexAlert")
-    alertPlaceholder.innerHTML = ""
-
-    if (badPatterns.length > 0) {
-      setAlertMessage(badRegexErrorMessage)
+  for (let i = 0; i < patternStrings.length; i++) {
+    try {
+      RegExp(patternStrings[i])
+      validPatterns.push(patternStrings[i])
+    } catch (error) {
+      badPatterns.push(patternStrings[i])
     }
   }
-})
+
+  for (let i = 0; i < badPatterns.length; i++) {
+    badPatternError += `<code>${badPatterns[i]}</code><br>`
+  }
+  const badRegexErrorMessage =
+    "The following regex patterns are invalid:<br>" + badPatternError
+
+  const alertPlaceholder = document.getElementById("invalidRegexAlert")
+  alertPlaceholder.innerHTML = ""
+
+  if (badPatterns.length > 0) {
+    setAlertMessage(badRegexErrorMessage)
+  }
+
+  localStorage.setItem(
+    "gh-lines-viewed-exclusions-list",
+    JSON.stringify(validPatterns),
+  )
+}
 
 function setAlertMessage(message) {
   const alertPlaceholder = document.getElementById("invalidRegexAlert")
@@ -70,4 +93,28 @@ function setAlertMessage(message) {
     "</div>",
   ].join("")
   alertPlaceholder.append(wrapper)
+}
+
+// Insert Common Exclusions
+insertCommonExclusionsButton.addEventListener("click", function () {
+  console.log("adding defaults")
+  // TODO: Add default files here!
+  const defaultExclusions = [
+    "package"
+  ];
+  let currentExclusions = exclusionsTextBox.value.split("\n")
+
+  if (currentExclusions.length === 1 && currentExclusions[0] === "") {
+    currentExclusions = []
+  }
+
+  currentExclusions = currentExclusions.concat(defaultExclusions)
+  exclusionsTextBox.value = currentExclusions.join("\n")
+  saveExclusions()
+})
+
+// Returning Exclusions List to content script
+function sendExclusionsList(message, sender, sendResponse) {
+  let exclusions = localStorage.getItem("gh-lines-viewed-exclusions-list")
+  sendResponse(JSON.parse(exclusions))
 }
