@@ -2,34 +2,57 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" href="../style/bootstrap.min.css" />
   </head>
 
   <body style="min-width: 500px">
     <div class="container p-4">
-        <div class="row">
-            <h4>GitHub Lines Viewed</h4>
+      <div class="row">
+        <h4>GitHub Lines Viewed</h4>
+      </div>
+      <div class="row">
+        <h5>Configuration</h5>
+      </div>
+      <div class="d-flex flex-row align-items-center pt-3">
+        <div class="pe-2">
+          <p class="mb-0">Exclusions List</p>
         </div>
-        <div class="row">
-            <h5>Configuration</h5>
+        <div>
+          <img
+            class="align-baseline"
+            tabindex="0"
+            width="14px"
+            src="../icons/help.png"
+            data-bs-toggle="popover"
+            data-bs-trigger="hover focus"
+            data-bs-html="true"
+            data-bs-content="Files matching the regex patterns will be excluded from line counts for the progress bar.<br><br>This is helpful for ignoring large machine-readable files like <code>poetry.lock</code> or <code>package-lock.json</code>"
+          />
         </div>
-        <div class="d-flex flex-row align-items-center pt-3">
-            <div class="pe-2">
-                <p class="mb-0">Exclusions List</p>
-            </div>
-            <div>
-                <img class="align-baseline" tabindex="0" width="14px" src="../icons/help.png" data-bs-toggle="popover" data-bs-trigger="hover focus" data-bs-html="true" data-bs-content="Files matching the regex patterns will be excluded from line counts for the progress bar.<br><br>This is helpful for ignoring large machine-readable files like <code>poetry.lock</code> or <code>package-lock.json</code>">
-            </div>
+      </div>
+      <div class="d-flex flex-row align-items-center">
+        <p class="mb-1">
+          <small
+            ><em
+              >All excluded files (including binaries) will count as 1 line.</em
+            ></small
+          >
+        </p>
+      </div>
+      <div class="row d-flex align-items-center">
+        <div class="col-10">
+          <textarea
+            rows="4"
+            class="form-control font-monospace"
+            id="exclusion-list"
+            placeholder="Enter each regex pattern on a new line."
+          ></textarea>
         </div>
-        <div class="row d-flex align-items-center">
-            <div class="col-10">
-                <textarea rows="4" class="form-control font-monospace" id="exclusion-list" placeholder="Enter each regex pattern on a new line."></textarea>
-            </div>
-            <div class="col-2">
-                <button type="button" class="btn btn-secondary">Edit</button>
-            </div>
+        <div class="col-2">
+          <button type="button" class="btn btn-secondary">Edit</button>
         </div>
+      </div>
     </div>
     <script src="../style/bootstrap.bundle.min.js"></script>
     <script src="config.js"></script>

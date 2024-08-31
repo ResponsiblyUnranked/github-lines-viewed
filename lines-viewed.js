@@ -40,7 +40,10 @@ function updateBarColour() {
     ".color-bg-accent-emphasis.js-review-progress",
   )
 
-  bar.style.setProperty("transition", "width 0.2s ease-out, background-color 0.3s ease")
+  bar.style.setProperty(
+    "transition",
+    "width 0.2s ease-out, background-color 0.3s ease",
+  )
 
   if (bar.style.width == "100%") {
     bar.style.setProperty("background-color", "#3b8640", "important")
