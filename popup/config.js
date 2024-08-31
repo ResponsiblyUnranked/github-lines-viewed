@@ -99,9 +99,7 @@ function setAlertMessage(message) {
 insertCommonExclusionsButton.addEventListener("click", function () {
   console.log("adding defaults")
   // TODO: Add default files here!
-  const defaultExclusions = [
-    "package"
-  ];
+  const defaultExclusions = ["package"]
   let currentExclusions = exclusionsTextBox.value.split("\n")
 
   if (currentExclusions.length === 1 && currentExclusions[0] === "") {
