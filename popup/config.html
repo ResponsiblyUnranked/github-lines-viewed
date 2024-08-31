@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="../style/bootstrap.min.css" />
   </head>
 
-  <body style="min-width: 450px">
+  <body style="min-width: 500px">
     <div class="container p-4">
         <div class="row">
             <h4>GitHub Lines Viewed</h4>
@@ -14,8 +14,13 @@
         <div class="row">
             <h5>Configuration</h5>
         </div>
-        <div class="row pt-3">
-            <h6>Exclusions List</h6>x
+        <div class="d-flex flex-row align-items-center pt-3">
+            <div class="pe-2">
+                <p class="mb-0">Exclusions List</p>
+            </div>
+            <div>
+                <img class="align-baseline" tabindex="0" width="14px" src="../icons/help.png" data-bs-toggle="popover" data-bs-trigger="hover focus" data-bs-html="true" data-bs-content="Files matching the regex patterns will be excluded from line counts for the progress bar.<br><br>This is helpful for ignoring large machine-readable files like <code>poetry.lock</code> or <code>package-lock.json</code>">
+            </div>
         </div>
         <div class="row d-flex align-items-center">
             <div class="col-10">
