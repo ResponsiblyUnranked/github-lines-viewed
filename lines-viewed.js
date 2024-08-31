@@ -1,5 +1,15 @@
-function getNewRatio() {
+function getExclusionsList() {
+  return browser.runtime.sendMessage({ thing: "content" })
+}
+
+function getNewRatio(exclusionsList) {
   const changedFiles = document.querySelectorAll("copilot-diff-entry")
+
+  if (exclusionsList[0] === "") {
+    exclusionsList = []
+  }
+
+  const exclusionRegexes = exclusionsList.map((r) => new RegExp(r))
 
   let totalLinesChanged = 0
   let linesViewed = 0
@@ -9,7 +19,20 @@ function getNewRatio() {
       changedFile.querySelector(".diffstat").textContent.replaceAll(",", ""),
     )
 
+    // Skip binary (BIN) files
     if (isNaN(fileLinesChanged)) {
+      fileLinesChanged = 1
+    }
+
+    // Skip excluded files
+    const filePath = changedFile.getAttribute("data-file-path")
+
+    if (exclusionRegexes.some((r) => r.test(filePath))) {
+      fileLinesChanged = 1
+    }
+
+    // Minimum 1 line changed always
+    if (fileLinesChanged === 0) {
       fileLinesChanged = 1
     }
 
@@ -45,7 +68,7 @@ function updateBarColour() {
     "width 0.2s ease-out, background-color 0.3s ease",
   )
 
-  if (bar.style.width == "100%") {
+  if (bar.style.width === "100%") {
     bar.style.setProperty("background-color", "#3b8640", "important")
   } else {
     bar.style.setProperty("background-color", "#3c69ba", "important")
@@ -53,8 +76,8 @@ function updateBarColour() {
 }
 
 function runScript() {
-  let newRatio = getNewRatio()
-  updateLinesRead(newRatio)
+  let exclusionsListPromise = getExclusionsList()
+  exclusionsListPromise.then(getNewRatio).then(updateLinesRead)
   textReplacement()
   updateBarColour()
 }
