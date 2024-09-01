@@ -107,7 +107,7 @@ insertCommonExclusionsButton.addEventListener("click", function () {
     ".*yarn\\.lock$", //JS
     ".*pnpm-lock\\.yaml$", // JS
     ".*Gemfile\\.lock$", // Ruby
-    ".*composer\.lock$", // PHP
+    ".*composer.lock$", // PHP
     ".*Cargo\\.lock$", // Rust
     ".*go\\.sum$", // GoLang
     ".*mix\\.lock$", // Elixir
