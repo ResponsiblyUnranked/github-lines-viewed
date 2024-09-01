@@ -28,22 +28,17 @@ exclusionsTextBox.value = savedExclusions
 
 editExclusionsButton.addEventListener("click", function () {
   // Cosmetic Changes
-  insertCommonExclusionsButton.disabled = !insertCommonExclusionsButton.disabled
   exclusionsTextBox.disabled = !exclusionsTextBox.disabled
 
   if (editExclusionsButton.textContent.trim() === "Edit") {
     editExclusionsButton.textContent = "Save"
-    editExclusionsButton.classList.add("btn-danger")
+    editExclusionsButton.classList.add("btn-success")
     editExclusionsButton.classList.remove("btn-primary")
-    insertCommonExclusionsButton.classList.add("btn-primary")
-    insertCommonExclusionsButton.classList.remove("btn-secondary")
   } else {
     // Cosmetic Changes
     editExclusionsButton.textContent = "Edit"
     editExclusionsButton.classList.add("btn-primary")
-    editExclusionsButton.classList.remove("btn-danger")
-    insertCommonExclusionsButton.classList.add("btn-secondary")
-    insertCommonExclusionsButton.classList.remove("btn-primary")
+    editExclusionsButton.classList.remove("btn-success")
   }
   saveExclusions()
 })
