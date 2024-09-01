@@ -28,20 +28,30 @@ Colour Change at 100%:
 
 <img width="400" src="assets/colour-change.gif"/>
 
-## Features
+Exclusions List:
 
-### Current
+<img width="400" src="assets/exclusions-list.png"/>
+
+## Features
 
 - Replaces 'files viewed' with 'lines viewed'
 - Progress bar colour to change based on its value, to clearly indicate a difference
   between anything < 100% and 100%
-
-### Planned
-
-- File exclusion list, to ignore `.lock` files with thousands of changes not designed
-  for human review https://github.com/ResponsiblyUnranked/github-lines-viewed/issues/12
-- Publish to Edge extension store
-- Port for Safari
+- Customisable file exclusion list to ignore machine-readable `.lock` files with thousands of changes
+  - Option to insert common `.lock` files for most programming languages:
+    - Python
+    - JavaScript
+    - Java
+    - C/C++
+    - PHP
+    - Go
+    - Rust
+    - Dart
+    - Ruby
+    - Swift
+    - R
+    - Elixir
+    - .NET
 
 <br/>
 <br/>
