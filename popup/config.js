@@ -98,8 +98,26 @@ function setAlertMessage(message) {
 // Insert Common Exclusions
 insertCommonExclusionsButton.addEventListener("click", function () {
   console.log("adding defaults")
-  // TODO: Add default files here!
-  const defaultExclusions = ["package"]
+  const defaultExclusions = [
+    ".*poetry\\.lock$", // Python
+    ".*Pipfile\\.lock$", // Python
+    ".*pdm\\.lock$", // Python
+    ".*pubspec\\.lock$", // Dart
+    ".*package-lock\\.json$", //JS
+    ".*yarn\\.lock$", //JS
+    ".*pnpm-lock\\.yaml$", // JS
+    ".*Gemfile\\.lock$", // Ruby
+    ".*composer\.lock$", // PHP
+    ".*Cargo\\.lock$", // Rust
+    ".*go\\.sum$", // GoLang
+    ".*mix\\.lock$", // Elixir
+    ".*packages\\.lock\\.json$", // .NET
+    ".*Package\\.resolved$", // Swift
+    ".*gradle\\.lockfile$", // Java
+    ".*buildscript-gradle\\.lockfile$", // Java
+    ".*conan\\.lock$", // C/C++
+    ".*renv\\.lock$", // R
+  ]
   let currentExclusions = exclusionsTextBox.value.split("\n")
 
   if (currentExclusions.length === 1 && currentExclusions[0] === "") {
