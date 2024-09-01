@@ -77,9 +77,11 @@ function updateBarColour() {
 
 function runScript() {
   let exclusionsListPromise = getExclusionsList()
-  exclusionsListPromise.then(getNewRatio).then(updateLinesRead)
-  textReplacement()
-  updateBarColour()
+  exclusionsListPromise
+    .then(getNewRatio)
+    .then(updateLinesRead)
+    .then(textReplacement)
+    .then(updateBarColour)
 }
 
 const checkboxObserver = new MutationObserver((mutations) => {
