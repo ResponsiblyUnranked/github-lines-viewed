@@ -1,5 +1,5 @@
 // Create listeners
-// browser.runtime.onMessage.addListener(sendExclusionsList)
+browser.runtime.onMessage.addListener(sendExclusionsList)
 
 // Enable popovers
 const popoverTriggerList = document.querySelectorAll(
