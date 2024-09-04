@@ -39,8 +39,8 @@ editExclusionsButton.addEventListener("click", function () {
     editExclusionsButton.textContent = "Edit"
     editExclusionsButton.classList.add("btn-primary")
     editExclusionsButton.classList.remove("btn-success")
+    saveExclusions()
   }
-  saveExclusions()
 })
 
 function saveExclusions() {
@@ -48,7 +48,6 @@ function saveExclusions() {
   const patternStrings = exclusionsTextBox.value.split("\n")
   const validPatterns = []
   const badPatterns = []
-  let badPatternError = ""
 
   for (let i = 0; i < patternStrings.length; i++) {
     try {
@@ -59,17 +58,12 @@ function saveExclusions() {
     }
   }
 
-  for (let i = 0; i < badPatterns.length; i++) {
-    badPatternError += `<code>${badPatterns[i]}</code><br>`
-  }
-  const badRegexErrorMessage =
-    "The following regex patterns are invalid:<br>" + badPatternError
-
   const alertPlaceholder = document.getElementById("invalidRegexAlert")
   alertPlaceholder.innerHTML = ""
 
   if (badPatterns.length > 0) {
-    setAlertMessage(badRegexErrorMessage)
+    setAlertMessage(badPatterns)
+  } else {
   }
 
   localStorage.setItem(
@@ -78,16 +72,36 @@ function saveExclusions() {
   )
 }
 
-function setAlertMessage(message) {
+function setAlertMessage(incorrectRegexes) {
   const alertPlaceholder = document.getElementById("invalidRegexAlert")
-  const wrapper = document.createElement("div")
-  wrapper.innerHTML = [
-    `<div class="alert alert-danger alert-dismissible" role="alert">`,
-    `   <div>${message}</div>`,
-    '   <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>',
-    "</div>",
-  ].join("")
-  alertPlaceholder.append(wrapper)
+  const alert = document.createElement("div")
+
+  alert.setAttribute("role", "alert")
+  alert.classList.add("alert", "alert-danger", "alert-dismissible")
+
+  const message = document.createElement("p")
+  message.textContent = "The following regex patterns are invalid:"
+
+  const messageDiv = document.createElement("div")
+  messageDiv.appendChild(message)
+
+  for (let i = 0; i < incorrectRegexes.length; i++) {
+    const singleRegex = document.createElement("code")
+    singleRegex.textContent = incorrectRegexes[i]
+
+    messageDiv.appendChild(singleRegex)
+    messageDiv.appendChild(document.createElement("br"))
+  }
+
+  const button = document.createElement("button")
+  button.setAttribute("type", "button")
+  button.classList.add("btn-close")
+  button.setAttribute("data-bs-dismiss", "alert")
+  button.setAttribute("aria-label", "Close")
+
+  alert.appendChild(messageDiv)
+  alert.appendChild(button)
+  alertPlaceholder.append(alert)
 }
 
 // Insert Common Exclusions
