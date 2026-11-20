@@ -1,5 +1,17 @@
 {
   "devDependencies": {
-    "prettier": "3.3.3"
+    "prettier": "3.3.3",
+    "web-ext": "8.10.0"
+  },
+  "webExt": {
+    "ignoreFiles": [
+      "CLAUDE.md",
+      "Makefile",
+      "assets",
+      "git-town.toml",
+      "package-lock.json",
+      "package.json",
+      "scripts"
+    ]
   }
 }
